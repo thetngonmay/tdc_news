@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app2/bloc/articles/articles_bloc.dart';
+import 'package:news_app2/bloc/save/save_bloc.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../articles_list_view.dart';
@@ -38,9 +39,14 @@ class MyHomePageState extends State<HomePage> {
     context.read<ArticlesBloc>().add(FetchEverything("bitcoin"));
   }
 
+  void fetchSavedList(){
+    context.read<SaveBloc>().add(GetAllSavedArticlesEvent());
+  }
+
   @override
   void initState() {
     fetchEverything();
+    fetchSavedList();
     super.initState();
   }
 

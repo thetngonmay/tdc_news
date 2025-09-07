@@ -22,10 +22,10 @@ class SavedStatusChecked extends SaveState{
 
 final class GetAllArticlesLoadingState extends SaveState {}
 
-final class GetAllArticlesLoaded extends SaveState{
+final class GetAllSavedArticlesLoaded extends SaveState{
   final List<ArticleModel> articles;
 
-  const GetAllArticlesLoaded(this.articles);
+  const GetAllSavedArticlesLoaded(this.articles);
 
   @override
   List<Object> get props => [articles];

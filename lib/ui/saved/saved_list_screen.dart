@@ -36,7 +36,7 @@ class SaveListScreenState extends State<SaveListScreen>{
             );
           }
 
-          if(state is GetAllArticlesLoaded){
+          if(state is GetAllSavedArticlesLoaded){
             return ArticlesListView(state.articles);
           }
 

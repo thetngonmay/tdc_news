@@ -35,7 +35,7 @@ class SaveBloc extends Bloc<SaveEvent, SaveState> {
     on<GetAllSavedArticlesEvent>((event, emit)async {
       emit(GetAllArticlesLoadingState());
       final savedList = await saveDao.getAll();
-      emit(GetAllArticlesLoaded(savedList));
+      emit(GetAllSavedArticlesLoaded(savedList));
     });
 
   }
