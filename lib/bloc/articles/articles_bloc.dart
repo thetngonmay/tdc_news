@@ -20,7 +20,7 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
       final currentState = state;
       List<ArticleModel> oldArticles = [];
       int nextPage = 1;
-      final pageSize = 20;
+      final pageSize = 10;
 
       if(currentState is EverythingLoaded && !currentState.hasReachedMax && !event.isRefresh){
         oldArticles = currentState.articles;

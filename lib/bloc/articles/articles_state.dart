@@ -8,13 +8,12 @@ sealed class ArticlesState extends Equatable {
 
 final class ArticlesInitial extends ArticlesState { }
 
-final class EverythingLoading extends ArticlesState{ }
+final class EverythingLoading extends ArticlesState { }
 
 final class EverythingLoaded extends ArticlesState{
   final List<ArticleModel> articles;
   final int page;
   final bool hasReachedMax;
-
 
   const EverythingLoaded({required this.articles, required this.page, required this.hasReachedMax});
 

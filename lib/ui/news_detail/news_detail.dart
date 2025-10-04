@@ -97,8 +97,7 @@ class NewsDetailState extends State<NewsDetail> {
                   child: LinearProgressIndicator(),
                 )
               : null,
-          actions: [
-            IconButton(onPressed: ()async{
+          actions: [IconButton(onPressed: ()async{
               await Navigator.push(context, MaterialPageRoute(builder: (context)=> SaveListScreen()));
               checkSaved();
             }, icon: Icon(Icons.save_rounded))
@@ -123,13 +122,11 @@ class NewsDetailState extends State<NewsDetail> {
                     return false;
                   },
                   builder: (context, isSaved) {
-                    return IconButton(
-                      onPressed: () {
+                    return IconButton(onPressed: () {
                         if(isSaved){
                           context.read<SaveBloc>().add(UnSaveArticleEvent(widget.data.url));
                         }else{
-                          context.read<SaveBloc>().add(
-                            SaveArticleEvent(widget.data),
+                          context.read<SaveBloc>().add(SaveArticleEvent(widget.data),
                           );
                         }
                       },

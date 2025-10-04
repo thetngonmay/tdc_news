@@ -21,8 +21,7 @@ class GenericDao<T extends BaseModel>{
 
   Future<void> insert(T item) async {
     final db = await dbProvider.database;
-    await db.insert(
-        tableName,
+    await db.insert(tableName,
         item.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace
     );
@@ -36,8 +35,7 @@ class GenericDao<T extends BaseModel>{
 
   Future<void> delete(String keyValue) async {
     final db = await dbProvider.database;
-    await db.delete(
-      tableName,
+    await db.delete(tableName,
       where: '$uniqueColumn = ?',
       whereArgs: [keyValue]
     );
@@ -50,9 +48,8 @@ class GenericDao<T extends BaseModel>{
 
   Future<bool> exists(String keyValue) async{
     final db = await dbProvider.database;
-    final result = await db.query(
-      tableName,
-      where: '$uniqueColumn = ?',
+    final result = await db.query(tableName,
+        where: '$uniqueColumn = ?',
       whereArgs: [keyValue]
     );
     return result.isNotEmpty;

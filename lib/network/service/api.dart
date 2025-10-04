@@ -8,7 +8,7 @@ typedef FromJson<T> = T Function(Map<String,dynamic> json);
 
 class Api{
   Client client = Client();
-  static String ApiKey='';
+  static String ApiKey='32461b66c2494cf2870fb004b50d6e20';
   
   Future<ApiResponse<T, ErrorResponse>> get<T>(
       String url,{
@@ -27,13 +27,13 @@ class Api{
   }
   Future<ApiResponse<T,ErrorResponse>>post<T>(
       String url,{
-        required Map<String,dynamic>body,
         required FromJson<T>fromJson,
         Map<String,String>? headers,
+        Map<String,String>? queryParms,
   } )async{
     try{
       final uri=Uri.parse(_appendApiKey(url));
-      final response= await client.post(uri,headers: _mergeHeaders(headers),body: jsonEncode(body),);
+      final response= await client.post(uri,headers: _mergeHeaders(headers),);
       return _handleResponse(response, fromJson);
     }catch (e){
       return Fail(ErrorResponse('error','client_error',e.toString()));
